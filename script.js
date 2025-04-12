@@ -16,7 +16,7 @@ async function add() {
          * Sept 19 GitHub Example
          * https://developer.mozilla.org/en-US/docs/Web/API/Request/cache
          */
-        // timestamp parameter, force a fresh API call
+        // force a fresh API call for a new article
         const response = await fetch(apiUrl, { cache: 'no-store' });
 
         if (!response.ok) {
@@ -32,10 +32,11 @@ async function add() {
             description, 
             url: articleUrl, 
             urlImage, 
-            publishDate } = json;
+            publishDate } = json; // response
 
 
         const article = document.createElement('div');
+        article.className = 'article';
         article.innerHTML = `
             <h3>${title}</h3>
             <p><strong>Source:</strong> ${source}</p>
